@@ -1,6 +1,6 @@
 "use client";
 
-import SingleMenu from "./SingleMenu";
+import SingleMenu from "../component/SingleMenu";
 
 const PopularMenu = [
   {

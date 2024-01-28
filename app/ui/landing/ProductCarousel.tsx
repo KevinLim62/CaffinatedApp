@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import SingleCarouselItem from "./SingleCarouselItem";
+import SingleCarouselItem from "../component/SingleCarouselItem";
 
 const CoffeePacks = [
   {

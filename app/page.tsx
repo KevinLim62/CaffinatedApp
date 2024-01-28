@@ -1,6 +1,6 @@
 import Banner from "./ui/landing/Banner";
-import ProductCarousel from "./ui/component/ProductCarousel";
-import MenuBentoGrid from "./ui/component/MenuBentoGrid";
+import ProductCarousel from "./ui/landing/ProductCarousel";
+import MenuBentoGrid from "./ui/landing/MenuBentoGrid";
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
