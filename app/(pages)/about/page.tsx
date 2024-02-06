@@ -1,33 +1,35 @@
-import AboutBanner from '@/app/ui/about/AboutBanner';
-import { StickyScroll } from '@/app/ui/about/StickyScroll';
+import AboutBanner from "@/app/ui/about/AboutBanner";
+import StickyScroll from "@/app/ui/about/StickyScroll";
 
-const content = [
+const locations = [
   {
-    title: 'Collaborative Editing',
-    description: 'Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.',
+    city: "Bayan Lepas, Penang",
+    address: "Address 1",
+    imageSrc: "/locations/bayanLepas.jpg",
   },
   {
-    title: 'Real time changes',
-    description: 'See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.',
+    city: "Georgetown, Penang",
+    address: "Address 2",
+    imageSrc: "/locations/georgetown.jpg",
   },
   {
-    title: 'Version control',
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    city: "Petaling Jaya, Selangor",
+    address: "Address 3",
+    imageSrc: "/locations/petalingJaya.jpg",
   },
   {
-    title: 'Running out of content',
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    city: "Johor Bahru, Johor",
+    address: "Address 4",
+    imageSrc: "/locations/johorBahru.jpg",
   },
 ];
 
 export default function About() {
   return (
-    <main className='flex min-h-screen flex-col items-center'>
+    <main className="flex min-h-screen flex-col items-center">
       <AboutBanner />
-      <div className='w-full p-5'>
-        <StickyScroll content={content} />
+      <div className="w-full p-5">
+        <StickyScroll locations={locations} />
       </div>
     </main>
   );
