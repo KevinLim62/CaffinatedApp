@@ -9,7 +9,7 @@ export default function Checkout() {
   const cart = useCart();
   return (
     <main className='flex min-h-screen flex-col items-center'>
-      <div className='w-full mt-[20vh]'>
+      <div className='w-full mt-[20vh] 2xl:mt-[15vh]'>
         <h1 className='text-6xl 2xl:text-7xl font-bold text-primary text-center'>Cart List</h1>
         <div className='m-10 p-5 border-2'>
           {cart.items.map((item) => (

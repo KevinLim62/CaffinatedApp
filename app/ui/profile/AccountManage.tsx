@@ -12,7 +12,7 @@ const AccountManage = () => {
 
   return (
     <Tabs value={tabStage} onValueChange={(value: any) => setTabStage(value)} className='w-[500px] mt-5'>
-      <TabsList className='flex flex-row justify-between items-center bg-transparent border-[1px]'>
+      <TabsList className='flex flex-row justify-between items-center bg-transparent border-[1px] sr-only'>
         <TabsTrigger className='w-1/2 data-[state=active]:text-foreground data-[state=active]:bg-primary  py-3' value='signin'>
           SignIn
         </TabsTrigger>
@@ -20,13 +20,13 @@ const AccountManage = () => {
           SignUp
         </TabsTrigger>
       </TabsList>
-      <TabsContent value='signin' className='h-[80vh]'>
+      <TabsContent value='signin' className='py-10'>
         <SignIn />
         <p className='mt-5 text-base font-medium text-primary text-center underline decoration-solid cursor-pointer' onClick={() => setTabStage('signup')}>
           I don't have an account
         </p>
       </TabsContent>
-      <TabsContent value='signup' className='h-[80vh]'>
+      <TabsContent value='signup' className='py-10'>
         <SignUp />
         <p className='mt-5 text-base font-medium text-primary text-center underline decoration-solid cursor-pointer' onClick={() => setTabStage('signin')}>
           I have an account

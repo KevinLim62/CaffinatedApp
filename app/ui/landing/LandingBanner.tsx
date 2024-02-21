@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import banner from '../../../public/banner/banner.png';
 
-const Banner = () => {
+const LandingBanner = () => {
   return (
     <div className='h-screen w-full overflow-hidden relative'>
       <Image src={banner} alt='Banner' fill className='contrast-50 object-cover' />
@@ -15,4 +15,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default LandingBanner;

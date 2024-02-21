@@ -29,7 +29,7 @@ const Cart = () => {
               </div>
             ))}
             <div className='flex w-full'>
-              <Button className='ml-auto mt-10' onClick={() => router.push('/checkout')}>
+              <Button className='ml-auto mt-10' onClick={() => router.push('/checkout')} disabled={cart.items.length === 0}>
                 Proceed
               </Button>
             </div>

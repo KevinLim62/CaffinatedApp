@@ -9,7 +9,7 @@ const SingleProduct: React.FC<Product> = ({ name, description, imageSrc, price, 
     <div className='w-full'>
       <div className='m-3 py-5'>
         <div className='flex flex-row items-center justify-center mx-20 h-full'>
-          <div className='w-[40%] h-[80vh] relative'>
+          <div className='w-[40%] h-[80vh] 2xl:w-[30%] 2xl:h-[60vh] relative'>
             <Image src={imageSrc} alt={name} fill className='object-cover' />
           </div>
           <div className='w-[60%] h-full'>
