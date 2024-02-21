@@ -23,7 +23,7 @@ const AccountManage = () => {
       <TabsContent value='signin' className='py-10'>
         <SignIn />
         <p className='mt-5 text-base font-medium text-primary text-center underline decoration-solid cursor-pointer' onClick={() => setTabStage('signup')}>
-          I don't have an account
+          I do not have an account
         </p>
       </TabsContent>
       <TabsContent value='signup' className='py-10'>
