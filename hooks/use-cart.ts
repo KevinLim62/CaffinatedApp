@@ -15,7 +15,7 @@ const useCart = create(
       items: [],
       addItem: (data: CartItem) => {
         const currentItem = get().items;
-        const existingItemIndex = currentItem.findIndex((item) => item.product.productId === data.product.productId);
+        const existingItemIndex = currentItem.findIndex((item) => item.product.id === data.product.id);
 
         if (existingItemIndex === -1) {
           set({ items: [...currentItem, data] });
@@ -31,7 +31,7 @@ const useCart = create(
         }
       },
       removeItem: (itemId: string) => {
-        set({ items: [...get().items.filter((item) => item.product.productId !== itemId)] });
+        set({ items: [...get().items.filter((item) => item.product.id !== +itemId)] });
       },
       removeAll: () => {
         set({ items: [] });

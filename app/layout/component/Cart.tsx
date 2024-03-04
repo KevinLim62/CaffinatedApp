@@ -24,7 +24,7 @@ const Cart = () => {
           <SheetTitle className='text-primary'>Shopping Cart</SheetTitle>
           <SheetDescription>
             {cart.items.map((item) => (
-              <div key={item.product.productId} className='my-2'>
+              <div key={item.product.id} className='my-2'>
                 <CartItem cartItem={item} />
               </div>
             ))}

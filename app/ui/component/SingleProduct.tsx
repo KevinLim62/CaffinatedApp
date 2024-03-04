@@ -4,13 +4,13 @@ import Image from 'next/image';
 import AddToCart from './AddToCart';
 import { Product } from '@/types/Product';
 
-const SingleProduct: React.FC<Product> = ({ name, description, imageSrc, price, productId }) => {
+const SingleProduct: React.FC<Product> = ({ name, description, imageSrc, price, id }) => {
   return (
     <div className='w-full'>
       <div className='m-3 py-5'>
         <div className='flex flex-row items-center justify-center mx-20 h-full'>
           <div className='w-[40%] h-[80vh] 2xl:w-[30%] 2xl:h-[60vh] relative'>
-            <Image src={imageSrc} alt={name} fill className='object-cover' />
+            <Image src={imageSrc[0]} alt={name} fill className='object-cover' />
           </div>
           <div className='w-[60%] h-full'>
             <div className='flex flex-col h-full items-start text-primary mx-20 p-10'>
@@ -30,7 +30,7 @@ const SingleProduct: React.FC<Product> = ({ name, description, imageSrc, price, 
                     description,
                     imageSrc,
                     price,
-                    productId,
+                    id,
                   }}
                 />
               </div>

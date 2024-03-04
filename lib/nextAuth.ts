@@ -34,17 +34,19 @@ export const authOptions: NextAuthOptions = {
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
 
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/loginDummyRoute`, {
+        const res = await fetch(`${process.env.NEXT_API_URL}/auth/signIn`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
         });
 
         const user = await res.json();
-        console.log(user.data);
+
         //If no error and we have user data, return it
         if (res.ok && user) {
-          return user.data;
+          return {
+            ...user,
+          };
         }
 
         // Return null if user data could not be retrieved
@@ -53,6 +55,20 @@ export const authOptions: NextAuthOptions = {
     }),
     // ...add more providers here
   ],
+  callbacks: {
+    async jwt({ token, trigger, session, user }) {
+      if (trigger === 'update' && session) {
+        return { ...token, ...session?.user };
+      }
+
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      session.user = token as any;
+
+      return session;
+    },
+  },
   session: {
     strategy: 'jwt',
   },
@@ -60,3 +76,18 @@ export const authOptions: NextAuthOptions = {
     signIn: '/profile',
   },
 };
+
+declare module 'next-auth' {
+  /**
+   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+      id: string;
+      name: string;
+      email: string;
+      role: string;
+      access_token: string;
+    };
+  }
+}
