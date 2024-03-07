@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import Provider from './layout/Provider';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Provider>
           <Navbar />
           {children}
+          <Toaster />
           <Footer />
         </Provider>
       </body>

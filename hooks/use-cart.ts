@@ -23,10 +23,9 @@ const useCart = create(
           const updatedItems: CartItem[] = [...currentItem];
           updatedItems[existingItemIndex] = {
             ...updatedItems[existingItemIndex],
-            quantity: updatedItems[existingItemIndex].quantity + data.quantity,
+            quantity: data.quantity,
           };
 
-          console.log('Updated items: ', updatedItems);
           set({ items: updatedItems });
         }
       },

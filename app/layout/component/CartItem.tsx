@@ -22,7 +22,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, imageSize = 100 }) => {
 
     const updatedCartItem = {
       product: cartItem.product,
-      quantity: cartItem.quantity,
+      quantity: value,
     };
 
     cart.addItem(updatedCartItem);

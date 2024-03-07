@@ -3,6 +3,7 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import SingleCarouselItem from '../component/SingleCarouselItem';
 import { Product } from '@/types/Product';
+import Link from 'next/link';
 
 type ProductCarouselProps = {
   products: Product[];
@@ -24,7 +25,9 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
         <CarouselContent>
           {products.map((product) => (
             <CarouselItem key={product.id} className='md:basis-1/2 lg:basis-1/3'>
-              <SingleCarouselItem product={product} />
+              <Link href={`/browse/${product.id}`} key={product.id}>
+                <SingleCarouselItem product={product} />
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

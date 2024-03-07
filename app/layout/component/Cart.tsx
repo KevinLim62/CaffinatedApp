@@ -6,10 +6,22 @@ import { CgShoppingCart } from 'react-icons/cg';
 import CartItem from './CartItem';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 const Cart = () => {
+  const { status } = useSession();
   const cart = useCart();
   const router = useRouter();
+
+  const handleProceedCheckout = () => {
+    if (status === 'authenticated') {
+      router.push('/checkout');
+    } else {
+      toast('You have to login first before proceeding to checkout');
+      router.push('/profile');
+    }
+  };
 
   return (
     <Sheet>
@@ -29,7 +41,7 @@ const Cart = () => {
               </div>
             ))}
             <div className='flex w-full'>
-              <Button className='ml-auto mt-10' onClick={() => router.push('/checkout')} disabled={cart.items.length === 0}>
+              <Button className='ml-auto mt-10' onClick={handleProceedCheckout} disabled={cart.items.length === 0}>
                 Proceed
               </Button>
             </div>

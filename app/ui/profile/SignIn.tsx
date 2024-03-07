@@ -11,6 +11,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa';
 import { signIn } from 'next-auth/react';
 import * as z from 'zod';
+import toast from 'react-hot-toast';
 
 const signInSchema = z.object({
   email: z
@@ -41,8 +42,9 @@ const SignIn = () => {
       email: data.email,
       password: data.password,
       redirect: true,
-      callbackUrl: 'http://localhost:3000',
+      callbackUrl: process.env.NEXT_UI_URL,
     }).then((res) => {
+      toast.success('Welcome back!');
       console.log('Sign in response: ', res);
     });
   };

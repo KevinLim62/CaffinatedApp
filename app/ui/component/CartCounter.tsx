@@ -16,7 +16,9 @@ const CartCounter: React.FC<CartCounterProps> = ({ counter, handleOnChange, icon
       <Button className='bg-transparent hover:bg-transparent' onClick={() => handleOnChange(counter - 1)}>
         <FaMinus size={iconSize} className='text-primary hover:scale-125' />
       </Button>
-      <Input type='text' className='w-[40px] bg-primary/10 rounded-md mx-auto' value={counter} onChange={(e) => handleOnChange(Number(e.target.value))} />
+      <div className='w-[60px]'>
+        <Input type='text' className='bg-primary/10 rounded-md mx-auto text-center' value={counter} onChange={(e) => handleOnChange(Number(e.target.value))} />
+      </div>
       <Button className='bg-transparent hover:bg-transparent' onClick={() => handleOnChange(counter + 1)}>
         <FaPlus size={iconSize} className='text-primary hover:scale-125' />
       </Button>

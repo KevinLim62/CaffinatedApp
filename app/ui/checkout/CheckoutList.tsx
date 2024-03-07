@@ -6,20 +6,22 @@ import { Button } from '@/components/ui/button';
 import useCart from '@/hooks/use-cart';
 import { useMutation } from '@tanstack/react-query';
 import { CartItem as cartItem } from '@/types/CartItem';
+import { useSession } from 'next-auth/react';
 
 const CheckoutList = () => {
   const cart = useCart();
-  const { isSuccess, error, mutate } = useMutation({
+  const { data: session } = useSession();
+  const { mutate } = useMutation({
     mutationKey: ['createOrder'],
     mutationFn: (data: createOrderDto) => createOrder(data),
     onMutate: () => {
-      console.log('Mutate');
+      console.log('On Mutate');
     },
     onError: () => {
-      console.log('Error');
+      console.log('On Error');
     },
     onSuccess: (data) => {
-      console.log('Success', data);
+      cart.removeAll();
     },
   });
 
@@ -30,7 +32,10 @@ const CheckoutList = () => {
         quantity: item.quantity,
       };
     });
-    mutate({ orderItem: payload });
+    mutate({
+      orderItem: payload,
+      userId: session?.user.id.toString() ?? '',
+    });
   };
 
   return (
