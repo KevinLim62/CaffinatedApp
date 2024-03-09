@@ -41,11 +41,15 @@ const SignIn = () => {
     await signIn('userLogin', {
       email: data.email,
       password: data.password,
-      redirect: true,
+      redirect: false,
       callbackUrl: process.env.NEXT_UI_URL,
     }).then((res) => {
-      toast.success('Welcome back!');
-      console.log('Sign in response: ', res);
+      if (res?.ok) {
+        toast.success('Welcome back!');
+        console.log('Sign in response: ', res);
+      } else {
+        toast.error('User email or password incorrect');
+      }
     });
   };
 

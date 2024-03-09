@@ -1,15 +1,14 @@
+'use server';
+
 import Stripe from 'stripe';
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/nextAuth';
-import { getOrderByUserId, updateOrderById } from '@/app/actions/orders';
-
+import { updateOrderById } from '@/app/actions/orders';
+import { redirect } from 'next/navigation';
 const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const payload = await req.text();
   const sig = req.headers.get('stripe-signature');
-  const session = await getServerSession(authOptions);
 
   try {
     let event = stripe.webhooks.constructEvent(payload, sig!, process.env.NEXT_STRIPE_WEBHOOK_SECRET!);
@@ -21,18 +20,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
     // Handle the event
     switch (event.type) {
       case 'payment_intent.succeeded':
-        const userOrder = await getOrderByUserId('1');
-        // const paymentAmount = event.data.object.amount;
-        const orderId = userOrder[userOrder.length - 1].id;
+        const { userId, orderId } = event.data.object.metadata;
         const result = await updateOrderById(orderId, {
           orderStatus: 'completed',
         });
         console.log(result);
-
+        redirect(`${process.env.NEXT_UI_URL}/profile`);
         break;
 
       default:
-      //console.log(`Unhandled event type ${event.type}`);
     }
 
     return NextResponse.json({ message: event.type }, { status: 200 });

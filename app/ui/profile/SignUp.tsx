@@ -1,11 +1,14 @@
 'use client';
 
+import { createUser, createUserDto } from '@/app/actions/users';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import * as z from 'zod';
 
 const signUpSchema = z.object({
@@ -40,7 +43,27 @@ const SignUp = () => {
     },
   });
 
-  const handleSignup = async (data: z.infer<typeof signUpSchema>) => {};
+  const { mutate } = useMutation({
+    mutationKey: ['createUser'],
+    mutationFn: (data: createUserDto) => createUser(data),
+    onMutate: () => {
+      console.log('On Mutate');
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+    onSuccess: (data) => {
+      toast.success(`User created successfully, please verify your account in your email address - ${data.email}`);
+    },
+  });
+
+  const handleSignup = async (data: z.infer<typeof signUpSchema>) => {
+    mutate({
+      name: data.username,
+      email: data.email,
+      password: data.password,
+    });
+  };
 
   return (
     <Card>
