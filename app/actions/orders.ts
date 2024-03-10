@@ -24,10 +24,10 @@ export type updateOrderDto = {
 export const createOrder = async (payload: createOrderDto) => {
   const res = await axios.post('/orders', payload);
 
-  if (res.data) {
-    const stripePaymentLink = res.data.StripePaymentLink.url;
-    redirect(stripePaymentLink);
-  }
+  // if (res.data) {
+  //   const stripePaymentLink = res.data.StripePaymentLink.url;
+  //   redirect(stripePaymentLink);
+  // }
   return res.data;
 };
 

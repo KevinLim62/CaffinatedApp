@@ -22,6 +22,13 @@ const CheckoutList = () => {
     },
     onSuccess: (data) => {
       cart.removeAll();
+      const a = document.createElement('a');
+      a.href = data.StripePaymentLink.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     },
   });
 
