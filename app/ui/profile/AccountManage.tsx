@@ -11,7 +11,7 @@ const AccountManage = () => {
   const [tabStage, setTabStage] = useState<tabStages>('signin');
 
   return (
-    <Tabs value={tabStage} onValueChange={(value: any) => setTabStage(value)} className='w-[500px] mt-5 mx-auto'>
+    <Tabs value={tabStage} onValueChange={(value: any) => setTabStage(value)} className='w-[300px] md:w-[500px] mt-5 mx-auto'>
       <TabsList className='flex flex-row justify-between items-center bg-transparent border-[1px] sr-only'>
         <TabsTrigger className='w-1/2 data-[state=active]:text-foreground data-[state=active]:bg-primary  py-3' value='signin'>
           SignIn

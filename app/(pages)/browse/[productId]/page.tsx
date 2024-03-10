@@ -13,7 +13,7 @@ const page = async ({ params }: paramProps) => {
   const product: Product = await getSingleProduct(params.productId);
 
   return (
-    <main className='flex flex-col min-h-screen items-center'>
+    <main className='flex flex-col min-h-screen min-w-[320px] items-center'>
       <SingleProductBanner
         product={{
           productId: product.id.toString(),

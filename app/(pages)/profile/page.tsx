@@ -8,7 +8,7 @@ export default function Profile() {
   const { data: session } = useSession();
 
   return (
-    <main className='flex min-h-screen flex-col w-full items-center'>
+    <main className='flex flex-col min-h-screen min-w-[320px] items-center'>
       <div className='mt-[20vh] mx-10 w-[90%]'>
         {session?.user ? (
           <UserDashboard />

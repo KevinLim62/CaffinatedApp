@@ -12,6 +12,8 @@ import { FaFacebookF } from 'react-icons/fa';
 import { signIn } from 'next-auth/react';
 import * as z from 'zod';
 import toast from 'react-hot-toast';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 const signInSchema = z.object({
   email: z
@@ -29,6 +31,9 @@ const signInSchema = z.object({
 });
 
 const SignIn = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathName = usePathname();
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -36,6 +41,19 @@ const SignIn = () => {
       password: '',
     },
   });
+
+  useEffect(() => {
+    const userActivation = searchParams.get('activation');
+    const userEmail = searchParams.get('email');
+    const userPassword = searchParams.get('password');
+
+    if (userActivation === 'true' && userEmail && userPassword) {
+      handleLogin({
+        email: userEmail,
+        password: userPassword,
+      });
+    }
+  }, []);
 
   const handleLogin = async (data: z.infer<typeof signInSchema>) => {
     await signIn('userLogin', {
@@ -46,6 +64,7 @@ const SignIn = () => {
     }).then((res) => {
       if (res?.ok) {
         toast.success('Welcome back!');
+        router.replace(pathName);
         console.log('Sign in response: ', res);
       } else {
         toast.error('User email or password incorrect');

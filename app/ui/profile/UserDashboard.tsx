@@ -28,8 +28,8 @@ const UserDashboard = () => {
         </AlertTitle>
         <AlertDescription className='font-medium text-primary'>Here you can view your order histories</AlertDescription>
       </Alert>
-      <Table className='mx-auto'>
-        <TableCaption>Order History</TableCaption>
+      <Table className='overflow-x-scroll'>
+        <TableCaption className='text-left'>Order History</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className='w-[100px]'>OrderId</TableHead>
@@ -51,11 +51,11 @@ const UserDashboard = () => {
                 <TableRow key={item.id} className='text-primary'>
                   <TableCell className='font-semibold'>{item.id}</TableCell>
                   <TableCell className='font-semibold'>{item.orderStatus}</TableCell>
-                  <TableCell>
-                    <Accordion type='single' collapsible className='w-full'>
+                  <TableCell className=''>
+                    <Accordion type='single' collapsible className='w-[500px] overflow-x-scroll'>
                       <AccordionItem value='item-1'>
                         <AccordionTrigger>{`Order Item (${orderItem.length})`}</AccordionTrigger>
-                        <AccordionContent>
+                        <AccordionContent className='space-y-5'>
                           {orderItem.map((el) => (
                             <div key={el.product.id} className='flex flex-row items-start justify-start w-full space-x-3'>
                               <Image src={el.product.imageSrc[0]} alt={el.product.name} height={150} width={150} className='rounded' />

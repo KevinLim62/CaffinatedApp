@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useAnimate, useMotionValueEvent, useScroll } from 'framer-motion';
 import { scroll } from 'framer-motion';
 import { useState } from 'react';
+import MobileNavbar from './MobileNavbar';
 
 export const navigationMenu = [
   {
@@ -62,8 +63,8 @@ const Navbar = () => {
           duration: 0.3,
         }}
       >
-        <div className='flex flex-row h-full items-center justify-between mx-5'>
-          <div className='w-[30%]'>
+        <div className='flex flex-row h-20 items-center justify-between mx-5 relative'>
+          <div className='hidden md:block md:w-[30%]'>
             <NavigationMenu>
               <NavigationMenuList className='gap-5'>
                 {navigationMenu.map((menu) => (
@@ -76,14 +77,19 @@ const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div>
+          <div className='md:hidden'>
+            <MobileNavbar />
+          </div>
+          <div className='absolute left-[40%] min-[500px]:left-[43%] md:static'>
             <Link href='/'>
               <Logo />
             </Link>
           </div>
-          <div className='w-[30%]'>
+          <div className='ml-auto md:m-0 w-[30%]'>
             <div className='flex gap-3 items-center justify-end'>
-              <Profile />
+              <div className='hidden md:block'>
+                <Profile />
+              </div>
               <Cart />
             </div>
           </div>

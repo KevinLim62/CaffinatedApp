@@ -19,8 +19,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     // Handle the event
     switch (event.type) {
-      case 'payment_intent.succeeded':
-        const { userId, orderId } = event.data.object.metadata;
+      case 'checkout.session.completed':
+        const { userId, orderId }: any = event.data.object.metadata;
         const result = await updateOrderById(orderId, {
           orderStatus: 'completed',
         });

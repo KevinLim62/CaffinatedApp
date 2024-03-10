@@ -9,7 +9,7 @@ export default async function Home() {
   const products: Product[] = await getProducts();
 
   return (
-    <main className='flex min-h-screen flex-col items-center'>
+    <main className='flex flex-col min-h-screen min-w-[320px] items-center '>
       <LandingBanner />
       <MenuBentoGrid />
       <Separator />

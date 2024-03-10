@@ -35,10 +35,10 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, imageSize = 100 }) => {
   return (
     <>
       <div className='p-3'>
-        <div className='flex flex-row items-start justify-start w-full space-x-3'>
+        <div className='flex flex-col md:flex-row items-start justify-start w-full md:space-x-3'>
           <Image src={cartItem.product.imageSrc[0]} alt={cartItem.product.name} height={imageSize} width={imageSize} className='rounded' />
 
-          <div className='flex flex-col h-full text-primary space-y-3'>
+          <div className='flex flex-col h-full text-primary space-y-3 text-left'>
             <h1 className='font-bold'>{cartItem.product.name}</h1>
             <h3 className='font-bold'>{`RM${cartItem.product.price}`}</h3>
             <CartCounter counter={counter} handleOnChange={handleCounterChange} iconSize={15} />

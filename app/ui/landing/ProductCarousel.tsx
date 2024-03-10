@@ -20,7 +20,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
         opts={{
           align: 'start',
         }}
-        className='min-w-[80vw]'
+        className='max-w-xs md:min-w-[80vw]'
       >
         <CarouselContent>
           {products.map((product) => (
@@ -31,8 +31,8 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className='text-primary' />
-        <CarouselNext className='text-primary' />
+        <CarouselPrevious className='hidden sm:flex text-primary' />
+        <CarouselNext className='hidden sm:flex text-primary' />
       </Carousel>
     </div>
   );

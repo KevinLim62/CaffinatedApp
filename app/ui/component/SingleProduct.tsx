@@ -8,12 +8,12 @@ const SingleProduct: React.FC<Product> = ({ name, description, imageSrc, price, 
   return (
     <div className='w-full'>
       <div className='m-3 py-5'>
-        <div className='flex flex-row items-center justify-center mx-20 h-full'>
-          <div className='w-[40%] h-[80vh] 2xl:w-[30%] 2xl:h-[60vh] relative'>
+        <div className='flex flex-col md:flex-row items-center justify-center md:mx-20 h-full'>
+          <div className='w-full h-[50vh] md:w-[40%] md:h-[80vh] 2xl:w-[30%] 2xl:h-[60vh] relative'>
             <Image src={imageSrc[0]} alt={name} fill className='object-cover' />
           </div>
-          <div className='w-[60%] h-full'>
-            <div className='flex flex-col h-full items-start text-primary mx-20 p-10'>
+          <div className='w-full md:w-[60%] h-full'>
+            <div className='flex flex-col h-full items-start text-primary md:mx-20 p-10'>
               <div className='space-y-3'>
                 <h1 className='text-6xl font-bold'>{name}</h1>
                 <h3 className='text-2xl font-bold my-2'>{`RM${price}`}</h3>

@@ -23,7 +23,7 @@ const SimilarProduct = () => {
         opts={{
           align: 'start',
         }}
-        className='min-w-[80vw]'
+        className='max-w-xs mx-auto md:min-w-[80vw]'
       >
         <CarouselContent>
           {Array.isArray(data) &&
@@ -35,8 +35,8 @@ const SimilarProduct = () => {
               </CarouselItem>
             ))}
         </CarouselContent>
-        <CarouselPrevious className='text-primary' />
-        <CarouselNext className='text-primary' />
+        <CarouselPrevious className='hidden sm:flex text-primary' />
+        <CarouselNext className='hidden sm:flex text-primary' />
       </Carousel>
     </div>
   );
